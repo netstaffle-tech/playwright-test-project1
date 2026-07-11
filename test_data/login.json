@@ -1,0 +1,34 @@
+{
+    "validUser": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+    },
+    "lockedOutUser": {
+        "username": "locked_out_user",
+        "password": "secret_sauce"
+    },
+    "problemUser": {
+        "username": "problem_user",
+        "password": "secret_sauce"
+    },
+    "performanceGlitchUser": {
+        "username": "performance_glitch_user",
+        "password": "secret_sauce"
+    },
+    "blankPassword": {
+        "username": "standard_user",
+        "password": ""
+    },
+    "blankUsername": {
+        "username": "",
+        "password": "secret_sauce"
+    },
+    "invalidUsername": {
+        "username": "wrong_user",
+        "password": "secret_sauce"
+    },
+    "invalidPassword": {
+        "username": "standard_user",
+        "password": "wrong_password"
+    }
+}
