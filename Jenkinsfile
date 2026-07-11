@@ -4,7 +4,7 @@ pipeline {
 
     tools {
         nodejs 'Node26.5'
-        jdk 'JDK17'
+        jdk 'jdk21'
     }
 
     stages {
