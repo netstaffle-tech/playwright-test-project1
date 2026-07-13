@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'Node26.5'
+        nodejs 'Node22'
         jdk 'jdk21'
     }
 
@@ -11,18 +11,24 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/netstaffle-tech/playwright-test-project1.git'
+                checkout scm
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Node Version') {
+            steps {
+                bat 'node -v'
+                bat 'npm -v'
+            }
+        }
+
+        stage('Install') {
             steps {
                 bat 'npm ci'
             }
         }
 
-        stage('Install Browsers') {
+        stage('Install Playwright') {
             steps {
                 bat 'npx playwright install'
             }
@@ -33,23 +39,11 @@ pipeline {
                 bat 'npx playwright test'
             }
         }
-
     }
 
     post {
-
         always {
-
-            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
-
-            publishHTML(target: [
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Report'
-            ])
-
+            archiveArtifacts artifacts: 'playwright-report/**'
         }
-
     }
-
 }
