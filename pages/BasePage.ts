@@ -194,4 +194,7 @@ export class BasePage {
     async toBeLessThan(value: number, expectedValue: number): Promise<void> {
         await expect(value).toBeLessThan(expectedValue);
     }
+    async waitForURL(url: string) {
+        await this.page.waitForURL(url)
+    }
 }

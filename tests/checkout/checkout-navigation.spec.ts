@@ -10,6 +10,7 @@ test.describe('@checkout @navigation Checkout Navigation', () => {
 
         await cartPage.openCart();
         await cartPage.clickCheckout();
+        await cartPage.waitForPageLoad();
     });
 
     test('TC133 Cancel Checkout', async ({ checkoutPage, cartPage }) => {
@@ -23,10 +24,9 @@ test.describe('@checkout @navigation Checkout Navigation', () => {
     });
 
     test('TC135 Browser Forward', async ({ checkoutPage, cartPage }) => {
-        await cartPage.clickCheckout();
         await checkoutPage.goBack();
         await checkoutPage.goForward();
-        await cartPage.verifyUrl(/cart/);
+        await checkoutPage.verifyUrl(/checkout-step-one/);
     });
 
     test('TC136 Refresh Checkout', async ({ checkoutPage, cartPage }) => {
@@ -36,8 +36,10 @@ test.describe('@checkout @navigation Checkout Navigation', () => {
 
     test('TC137 Continue to Overview', async ({ checkoutPage, inventoryPage }) => {
         await checkoutPage.fillCheckoutInformation('John', 'Doe', '380015');
-        await checkoutPage.clickContinue();
-        await inventoryPage.verifyUrl(/checkout-step-two/);
+        await Promise.all([
+            checkoutPage.waitForURL("https://www.saucedemo.com/checkout-step-two.html"),
+            checkoutPage.clickContinue()
+        ]);
     });
 
 }); 
