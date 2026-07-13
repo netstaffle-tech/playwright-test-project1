@@ -10,7 +10,5 @@ node_modules/
 blob-report/
 allure-results/
 allure-report/
-.env
-.env.*
 dist/
 coverage/
