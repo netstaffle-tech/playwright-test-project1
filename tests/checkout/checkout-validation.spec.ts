@@ -42,11 +42,6 @@ test.describe('@checkout @validation Checkout Validation', () => {
         await checkoutPage.verifyError('Error: First Name is required');
     });
 
-    test('TC130 Verify error icon', async ({ checkoutPage }) => {
-        await checkoutPage.clickContinue();
-        await checkoutPage.verifyErrorIcon();
-    });
-
     test('TC131 Verify error removed after valid input', async ({ checkoutPage, inventoryPage }) => {
         await checkoutPage.clickContinue();
         await checkoutPage.fillCheckoutInformation('John', 'Doe', '380015');

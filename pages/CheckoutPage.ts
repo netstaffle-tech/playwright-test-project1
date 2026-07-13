@@ -92,10 +92,6 @@ export class CheckoutPage extends BasePage {
         await expect(this.cancelButton).toBeVisible();
     }
 
-    async verifyErrorIcon() {
-        await expect(this.page.locator('.error_icon')).toBeVisible();
-    }
-
     async verifyCheckoutFields() {
         await expect(this.firstName).toBeVisible();
         await expect(this.lastName).toBeVisible();

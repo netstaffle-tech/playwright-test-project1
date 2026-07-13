@@ -59,11 +59,11 @@ export class CartPage extends BasePage {
     }
 
     async clickCheckout() {
-        await this.checkoutButton.click();
+        await this.click(this.checkoutButton);
     }
 
     async clickContinueShopping() {
-        await this.continueShopping.click();
+        await this.click(this.continueShopping);
     }
 
 }
