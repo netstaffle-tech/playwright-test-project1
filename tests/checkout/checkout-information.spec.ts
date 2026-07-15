@@ -12,7 +12,7 @@ test.describe('@checkout Checkout Information', () => {
         await cartPage.clickCheckout();
     });
 
-    test('TC101 @smoke Valid Checkout', async ({ checkoutPage, inventoryPage }) => {
+    test('TC101 @smoke Valid Checkout details', async ({ checkoutPage, inventoryPage }) => {
         await checkoutPage.fillCheckoutInformation('John', 'Doe', '380015');
         await checkoutPage.clickContinue();
 
